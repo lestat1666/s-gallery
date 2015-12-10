@@ -136,11 +136,16 @@
                 //to show index of img in list
                 var index = that.current + 1;
                 // startImg.find('.img-index').html(index + ' sur ' + that.count);
+                var animationendHandlers = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
 
-                $this.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+                $this.one(animationendHandlers, function(e) {
                     startImg.addClass('fadeInScaleUp').removeClass('fadeOut');
                     that.bigItemsList.css('pointer-events', 'auto');
                     that.changeHeight(600);
+
+                    //unbind all event handlers to prevent prefixed handlers from firing
+                    //in browsers that support the animation property without a prefix
+                    $(this).off(animationendHandlers);
                 });   
             });
         },
