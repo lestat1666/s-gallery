@@ -317,7 +317,7 @@
                 'left'       : left  + 'px',
                 'top'        : top  + 'px',
             }, wait * 1000, function(){
-                    $(this).removeClass('fadeInScaleUp').removeAttr('style');
+                   $('.item--big').removeClass('fadeInScaleUp').removeAttr('style');
                     currentImg.find('.img-caption').css('opacity', '1');
             });
         }
